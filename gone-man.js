@@ -14,7 +14,9 @@ var hangmanWords = [
 
 var txt = document.querySelector('.guess');
 var btn = document.querySelector('button');
+var h1 = document.querySelector('h1');
 var guess = "";
+var resetBtn = document.querySelector('.reset')
 
 function filter (wordList) {
   for (var i = 0; i<wordList.length; i++) {
@@ -52,12 +54,55 @@ function checkGuess (answerWord) {
     if (answerWord.charAt(h)===guess) {
       answerField[h]=guess;
       empty.textContent=answerField.join("");
+      txt.value = '';
     }
   }
 }
 
+function checkForLoss (x) {
+  if (x>7) {
+    h1.textContent='You lose!';
+  }
+}
+
+var guessNumber = 0;
 
 btn.addEventListener('click', function () {
   guess = txt.value;
   checkGuess(answer);
+  guessNumber++;
+  checkForLoss(guessNumber);
+  if (checkForWin(answerField)) {
+    h1.textContent='You Win!';
+  };
+})
+
+function reset () {
+  answer = randomIndex(filter(hangmanWords));
+  answerField = [];
+  displayMystery(answer);
+  txt.value = '';
+  guessNumber = 0;
+  console.log(answer);
+  h1.textContent='Gone Man';
+}
+
+function checkForWin (field) {
+  for (var h = 0; h<field.length;h++) {
+    if (field[h]==="_") {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkForLoss (x) {
+  if (x>7) {
+    h1.textContent='You lose!';
+    return true;
+  }
+}
+
+resetBtn.addEventListener('click', function () {
+  reset();
 })
