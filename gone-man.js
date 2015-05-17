@@ -50,28 +50,27 @@ displayMystery(answer);
 console.log(answer);
 
 function checkGuess (answerWord) {
+  var correct = 0;
   for (var h = 0; h<answerWord.length;h++) {
     if (answerWord.charAt(h)===guess) {
       answerField[h]=guess;
-      empty.textContent=answerField.join("");
-      txt.value = '';
+      correct += 1;
     }
   }
-}
-
-function checkForLoss (x) {
-  if (x>7) {
-    h1.textContent='You lose!';
+  if (correct==0) {
+    incorrectCount +=1;
+    console.log(incorrectCount);
   }
+  txt.value = '';
+  empty.textContent=answerField.join("");
 }
 
-var guessNumber = 0;
+var incorrectCount = 0;
 
 btn.addEventListener('click', function () {
   guess = txt.value;
   checkGuess(answer);
-  guessNumber++;
-  checkForLoss(guessNumber);
+  checkForLoss(incorrectCount);
   if (checkForWin(answerField)) {
     h1.textContent='You Win!';
   };
@@ -82,7 +81,7 @@ function reset () {
   answerField = [];
   displayMystery(answer);
   txt.value = '';
-  guessNumber = 0;
+  incorrectCount = 0;
   console.log(answer);
   h1.textContent='Gone Man';
 }
@@ -96,8 +95,8 @@ function checkForWin (field) {
   return true;
 }
 
-function checkForLoss (x) {
-  if (x>7) {
+function checkForLoss (incorrect) {
+  if (incorrect>7) {
     h1.textContent='You lose!';
     return true;
   }
