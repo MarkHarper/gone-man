@@ -1,3 +1,268 @@
-span {
-  letter-spacing: 15px;
+/*********************************
+Game Styling
+*********************************/
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: HSLA(190, 30%, 76%, 1);
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 5em;
+  color: white;
+  box-sizing: border-box;
+  padding: 1.5% 0;
+}
+
+.main-container {
+  /*
+  margin: 0 auto;
+  width: 90%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  */
+}
+
+  .game-tracker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .man-container {
+      background: linear-gradient(to bottom, #a0dae6 0%, #a0dae6 240px, #4cac63 60px, #4cac63 100%);
+      width:600px;
+      height:300px;
+      border: solid 3px HSLA(60, 6%, 7%, 1);
+    }
+
+    .ship {
+      height: 20px;
+      width: 55px;
+      background-color: grey;
+      border-radius: 100%;
+      border: 1px solid HSLA(53, 100%, 50%, 1);
+      margin: 50 160;
+      position: relative;
+    }
+
+    .ship:after {
+      width: 30px;
+      height: 40px;
+      top: -12;
+      left: 27;
+      position: absolute;
+      border: 1px solid HSLA(53, 100%, 50%, 1);
+      background: white;
+      content: "";
+      border-radius: 100px;
+    }
+
+    .night {
+      opacity: 0;
+      height: 400px;
+      width: 600px;
+      position: absolute;
+    }
+
+    .sun {
+      position: absolute;
+      height: 40px;
+      width: 40px;
+      border-radius: 100px;
+      left: 369;
+      top: 145;
+      background: radial-gradient(lightyellow 5%, yellow 80%);
+      box-shadow: 0px 0px 3px 3px yellow;
+      opacity: .95;
+    }
+
+    .dog {
+      position: absolute;
+      height: 50px;
+      top: 345px;
+      left: 445px;
+    }
+
+    .alien {
+      position: absolute;
+      height: 100px;
+      top: 295px;
+      left: 800px;
+      opacity: 0;
+    }
+
+    .cloud {
+      height: 35px;
+      width: 65px;
+      background-color: white;
+      border-radius: 100px;
+      margin: 50 160;
+      position: relative;
+    }
+
+    .cloud:after {
+      width: 30px;
+      height: 40px;
+      top: -12;
+      left: 27;
+      position: absolute;
+      background: white;
+      content: "";
+      border-radius: 100px;
+    }
+
+    .cloud:before {
+      width: 25px;
+      height: 30px;
+      top: -6;
+      right: 30px;
+      position: absolute;
+      background: white;
+      content: "";
+      border-radius: 100px;
+    }
+
+    #cloud1 {
+      top: -20;
+    }
+
+    #cloud2 {
+      top: -40;
+      right: -240;
+      opacity: .8;
+    }
+
+    #cloud3 {
+      top: -140;
+      right: 100;
+      opacity: .9;
+    }
+
+    #cloud4 {
+      top: -290;
+      left: 340px;
+      opacity: .9;
+    }
+
+    #cloud5 {
+      top: -350;
+      left: 150;
+      opacity: .6;
+    }
+
+  #dash-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    color: white;
+  }
+
+    span {
+      letter-spacing: 2em;
+      /*
+      box-sizing: border-box;
+      width: 15%;
+      background-color: grey;
+      padding-bottom: 2%;
+      font-size: 5em;
+      */
+      text-align: center;
+      padding-left: 2em;
+    }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0;
+    color: white;
+  }
+
+    button {
+      font-family: 'Raleway', sans-serif;
+      color: HSLA(60, 6%, 7%, 1);
+      box-sizing: border-box;
+      padding: 1.5% 1%;
+      margin: 0 2% 2%;
+    }
+
+    .reset {
+      font-family: 'Raleway', sans-serif;
+      color: HSLA(60, 6%, 7%, 1);
+      box-sizing: border-box;
+      padding: 1.5% 1%;
+      margin: 0 2% 2%;
+    }
+
+  .key-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+    .guess {
+      color: HSLA(60, 6%, 7%, 1);
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.5em;
+      margin-bottom: 4%;
+    }
+
+/**********************************
+Stick Man
+**********************************/
+
+#stick-fig {
+  position: absolute;
+  height: 100px;
+  top: 300px;
+  left: 560;
+}
+
+/**********************************
+Animations
+**********************************/
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .7;
+  }
+  75% {
+    opacity: .5;
+  }
+  90% {
+    opacity: .25;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .25;
+  }
+  75% {
+    opacity: .5;
+  }
+  90% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 1;
+  }
 }
